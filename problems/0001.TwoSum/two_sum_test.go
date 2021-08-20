@@ -43,3 +43,19 @@ func TestTwoSumLoop(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkTwoSum(b *testing.B) {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		twoSum(test.input,test.target)
+	}
+}
+
+func BenchmarkTwoSumLoop(b *testing.B) {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		twoSumLoops(test.input,test.target)
+	}
+}
