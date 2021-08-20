@@ -1,13 +1,7 @@
-package main
+package problem1
 
-import "fmt"
-
-func main()  {
-	fmt.Println(twoSumLoops([]int{2,7,11,15}, 9))
-	fmt.Println(twoSum([]int{2,7,11,15}, 9))
-}
-
-// Fast solution for example
+// O(n)   time
+// O(n)   memory
 func twoSum(nums []int, target int) []int {
 	m := make(map[int]int, len(nums)) // memory save
 
@@ -22,7 +16,8 @@ func twoSum(nums []int, target int) []int {
 }
 
 
-// Slow solution for example
+// O(n^2) time
+// O(1)   memory
 func twoSumLoops(nums []int, target int) []int {
 	for i:= 0; i < len(nums); i++ {
 		for j := i+1; j < len(nums);j++ {
@@ -31,5 +26,5 @@ func twoSumLoops(nums []int, target int) []int {
 			}
 		}
 	}
-	return []int{}
+	return nil // []int{}
 }
