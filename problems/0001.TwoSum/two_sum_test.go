@@ -5,18 +5,50 @@ import (
 	"testing"
 )
 
+ type ListNode struct {
+	     Val int
+	     Next *ListNode
+ }
+
 type test struct {
-	input []int
-	target int
-	expected []int
+	l1 *ListNode
+	l2 *ListNode
+	expected *ListNode
 }
 
 func getTestcases() []test {
 	return []test{
 		{
-			[]int{2,7,11,15},
-				9,
-				[]int{0,1},
+			&ListNode{
+				Val:  2,
+				Next: &ListNode{
+					Val:  4,
+					Next: &ListNode{
+						Val:  3,
+						Next: nil,
+					},
+				},
+			},
+			&ListNode{
+				Val:  5,
+				Next: &ListNode{
+					Val:  6,
+					Next: &ListNode{
+						Val:  4,
+						Next: nil,
+					},
+				},
+			},
+			&ListNode{
+				Val:  7,
+				Next: &ListNode{
+					Val:  0,
+					Next: &ListNode{
+						Val:  8,
+						Next: nil,
+					},
+				},
+			},
 		},
 		{
 			[]int{3,2,4},
