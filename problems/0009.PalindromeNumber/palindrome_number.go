@@ -22,3 +22,20 @@ func isPalindrome(x int) bool  {
 
 	return x == r
 }
+
+func isPalindrome2(x int) bool  {
+	t := x
+	if x < 0 {
+		return false
+	}
+
+	var r, d int
+
+	for t != 0 {
+		d = t%10
+		r = r * 10 + d
+		t /= 10
+	}
+
+	return r == x
+}

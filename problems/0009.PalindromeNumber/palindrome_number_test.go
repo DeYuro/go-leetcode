@@ -19,11 +19,28 @@ func TestIsPalindrome(t *testing.T) {
 	}
 }
 
+func TestIsPalindrome2(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := isPalindrome2(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+
 func BenchmarkIsPalindrome(b *testing.B) {
 	test := getTestcases()[2]
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		isPalindrome(test.input)
+	}
+}
+
+func BenchmarkIsPalindrome2(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		isPalindrome2(test.input)
 	}
 }
 
