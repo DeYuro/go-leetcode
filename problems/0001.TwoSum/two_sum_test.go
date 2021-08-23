@@ -22,6 +22,10 @@ func getTestcases() []test {
 			[]int{3,2,4},
 				6,
 				[]int{1,2},
+		}, {
+			[]int{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 6, 7},
+			13,
+			[]int{50, 51},
 		},
 	}
 }
@@ -45,7 +49,7 @@ func TestTwoSumLoop(t *testing.T) {
 }
 
 func BenchmarkTwoSum(b *testing.B) {
-	test := getTestcases()[0]
+	test := getTestcases()[2]
 	b.ResetTimer()
 	for i:=0; i < b.N; i++ {
 		twoSum(test.input,test.target)
@@ -53,7 +57,7 @@ func BenchmarkTwoSum(b *testing.B) {
 }
 
 func BenchmarkTwoSumLoop(b *testing.B) {
-	test := getTestcases()[0]
+	test := getTestcases()[2]
 	b.ResetTimer()
 	for i:=0; i < b.N; i++ {
 		twoSumLoops(test.input,test.target)
