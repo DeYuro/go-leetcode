@@ -44,3 +44,46 @@ func TestAddTwoNumbers(t *testing.T)  {
 		}
 	}
 }
+
+
+func TestAddTwoNumbers2(t *testing.T)  {
+	for _,v := range getTestcases() {
+		output := addTwoNumbers2(v.l1, v.l2)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+
+func TestAddTwoNumbers3(t *testing.T)  {
+	for _,v := range getTestcases() {
+		output := addTwoNumbers3(v.l1, v.l2)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+
+func BenchmarkAddTwoNumbers(b *testing.B) {
+	test := getTestcases()[3]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		addTwoNumbers(test.l1,test.l2)
+	}
+}
+
+func BenchmarkAddTwoNumbers2(b *testing.B) {
+	test := getTestcases()[3]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		addTwoNumbers2(test.l1,test.l2)
+	}
+}
+
+func BenchmarkAddTwoNumbers3(b *testing.B) {
+	test := getTestcases()[3]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		addTwoNumbers3(test.l1,test.l2)
+	}
+}
