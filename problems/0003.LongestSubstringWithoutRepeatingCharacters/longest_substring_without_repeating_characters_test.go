@@ -26,6 +26,23 @@ func TestLengthOfLongestSubstring2(t *testing.T)  {
 		}
 	}
 }
+
+func BenchmarkLengthOfLongestSubstring(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		lengthOfLongestSubstring2(test.input)
+	}
+}
+
+func BenchmarkLengthOfLongestSubstring2(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		lengthOfLongestSubstring2(test.input)
+	}
+}
+
 func getTestcases() []test {
 	return []test{
 		{
