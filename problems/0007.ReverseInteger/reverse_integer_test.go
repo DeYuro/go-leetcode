@@ -19,7 +19,7 @@ func TestReverseInteger(t *testing.T)  {
 	}
 }
 
-func BenchmarkReverseInteget(b *testing.B)  {
+func BenchmarkReverseInteger(b *testing.B)  {
 	test := getTestcases()[2]
 	b.ResetTimer()
 	for i:=0; i < b.N; i++ {
