@@ -19,9 +19,19 @@ func getTestcases() []test {
 			`PAHNAPLSIIGYIR`,
 		},
 		{
+			`PAYPALISHIRING`,
+			4,
+			`PINALSIGYAHRPI`,
+		},
+		{
+			`PAYPALISHIRING`,
+			5,
+			`PHASIYIRPLIGAN`,
+		},
+		{
 			"ABC",
 			1,
-			"HZ",
+			"ABC",
 		},
 	}
 }
@@ -41,5 +51,21 @@ func TestZigZagConvert2(t *testing.T)  {
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
+	}
+}
+
+func BenchmarkConvert(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		convert(test.input,test.numRows)
+	}
+}
+
+func BenchmarkConvert2(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		convert2(test.input,test.numRows)
 	}
 }
