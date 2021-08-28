@@ -35,6 +35,25 @@ func convert(s string, numRows int) string {
 
 	return answer
 }
+//
+// s = "PAYPALISHIRING", numRows = 3
+//
+// P     A     H     N
+//  A  P  L  S  I  I   G
+//   Y     I     R
+//
+// ANSWER = PAHNAPLSIIGYIR
+//
+// PERIOD = 2
+//s = "PAYPALISHIRING", numRows = 4
+//
+// P       I      N
+//  A    L  S    I  G
+//   Y  A    H  R
+//    P       I
+//
+// ANSWER PINALSIGYAHRPI
+// PERIOD = 4
 
 func convert2(s string, numRows int)string {
 	if (numRows == 1) || (len(s) <= numRows) {
