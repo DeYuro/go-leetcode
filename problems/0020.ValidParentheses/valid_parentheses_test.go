@@ -18,6 +18,15 @@ func TestIsValid(t *testing.T) {
 		}
 	}
 }
+
+func TestIsValid2(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := isValid2(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
 func getTestcases() []test {
 	return []test{
 		{
