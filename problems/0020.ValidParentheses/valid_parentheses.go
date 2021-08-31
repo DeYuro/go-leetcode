@@ -1,7 +1,6 @@
 package problem20
 
 func isValid(s string) bool {
-
 	var stack []rune
 	for _, v := range s {
 		switch string(v) {
