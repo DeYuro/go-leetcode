@@ -27,6 +27,22 @@ func TestIsValid2(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkIsValid(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		isValid(test.input)
+	}
+}
+
+func BenchmarkIsValid2(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		isValid2(test.input)
+	}
+}
 func getTestcases() []test {
 	return []test{
 		{
