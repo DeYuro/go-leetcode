@@ -39,3 +39,27 @@ func TestLongestPalindrome(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkLongestPalindrome(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		longestPalindrome(test.input)
+	}
+}
+
+func BenchmarkLongestPalindrome2(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		longestPalindrome2(test.input)
+	}
+}
+
+func BenchmarkLongestPalindrome3(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i:=0; i < b.N; i++ {
+		longestPalindrome3(test.input)
+	}
+}
