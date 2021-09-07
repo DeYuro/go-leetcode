@@ -22,13 +22,18 @@ func getTestcases() []test {
 		}, {
 			"IX",
 			9,
-		}, {
+		},
+		{
 			"LVIII",
 			58,
 		},
 		{
 			"MCMXCIV",
 			1994,
+		},
+		{
+			"MDCCCLXXXIV",
+			1884,
 		},
 	}
 }
