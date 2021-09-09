@@ -46,3 +46,11 @@ func TestRomanToInt(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkRomanToInt(b *testing.B)  {
+	test := getTestcases()[5]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		romanToInt(test.input)
+	}
+}
