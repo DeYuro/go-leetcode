@@ -58,3 +58,17 @@ func convert(a,b,c string, num int) string {
 
 	return strings.Join(roman,"")
 }
+
+func intToRoman2(num int) string {
+	dec := [13]int{1000,900,500,400,100,90,50,40,10,9,5,4,1}
+	roman := [13]string{"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"}
+	var result strings.Builder
+
+	for i,v := range &dec {
+		for num>=v {
+			num -= v
+			result.WriteString(roman[i])
+		}
+	}
+	return result.String()
+}
