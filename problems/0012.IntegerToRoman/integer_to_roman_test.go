@@ -50,11 +50,26 @@ func TestRomanToInt(t *testing.T) {
 		}
 	}
 }
-
+func TestRomanToInt2(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := intToRoman2(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
 func BenchmarkRomanToInt(b *testing.B)  {
 	test := getTestcases()[5]
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		intToRoman(test.input)
+	}
+}
+
+func BenchmarkRomanToInt2(b *testing.B)  {
+	test := getTestcases()[5]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		intToRoman2(test.input)
 	}
 }
