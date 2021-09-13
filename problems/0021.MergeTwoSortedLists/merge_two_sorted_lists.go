@@ -31,3 +31,35 @@ func mergeTwoLists(l1 *structures.ListNode,l2 *structures.ListNode) *structures.
 
 	return head.Next
 }
+
+func mergeTwoLists2(l1 *structures.ListNode,l2 *structures.ListNode) *structures.ListNode {
+	head := &structures.ListNode{}
+	var merged = head
+
+	for l1 != nil || l2 != nil {
+		if l1 == nil {
+			merged.Next = l2
+			break
+		}
+
+		if l2 == nil {
+			merged.Next = l1
+			break
+		}
+
+
+		if l1.Val >= l2.Val {
+			merged.Next = l2
+			l2 = l2.Next
+
+		} else  {
+			merged.Next = l1
+			l1 = l1.Next
+
+		}
+
+		merged = merged.Next
+	}
+
+	return head.Next
+}
