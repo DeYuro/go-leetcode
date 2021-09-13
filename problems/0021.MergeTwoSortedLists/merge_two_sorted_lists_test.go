@@ -42,3 +42,12 @@ func TestMergeTwoLists(t *testing.T)  {
 		}
 	}
 }
+
+func TestMergeTwoLists2(t *testing.T)  {
+	for _,v := range getTestcases() {
+		output := mergeTwoLists2(v.l1, v.l2)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
