@@ -47,15 +47,12 @@ func mergeTwoLists2(l1 *structures.ListNode,l2 *structures.ListNode) *structures
 			break
 		}
 
-
 		if l1.Val >= l2.Val {
 			merged.Next = l2
 			l2 = l2.Next
-
 		} else  {
 			merged.Next = l1
 			l1 = l1.Next
-
 		}
 
 		merged = merged.Next

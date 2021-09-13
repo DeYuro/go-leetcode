@@ -51,3 +51,19 @@ func TestMergeTwoLists2(t *testing.T)  {
 		}
 	}
 }
+
+func BenchmarkMergeTwoLists(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		mergeTwoLists(test.l1, test.l2)
+	}
+}
+
+func BenchmarkMergeTwoLists2(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		mergeTwoLists2(test.l1, test.l2)
+	}
+}
