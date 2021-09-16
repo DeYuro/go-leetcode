@@ -32,11 +32,35 @@ func getTestcases() []test {
 	}
 }
 
-func TestLongestCommonPrefix(t *testing.T) {
+func TestMaxArea(t *testing.T) {
 	for _, v := range getTestcases() {
 		output := maxArea(v.input)
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
+	}
+}
+
+func TestMaxArea2(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := maxArea2(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+func BenchmarkMaxArea(b *testing.B)  {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		maxArea(test.input)
+	}
+}
+
+func BenchmarkMaxArea2(b *testing.B)  {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		maxArea2(test.input)
 	}
 }
