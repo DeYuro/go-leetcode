@@ -1,5 +1,6 @@
 package problem11
 
+// Work but "Time Limit Exceeded"
 func maxArea(height []int) int {
 	var area int
 
