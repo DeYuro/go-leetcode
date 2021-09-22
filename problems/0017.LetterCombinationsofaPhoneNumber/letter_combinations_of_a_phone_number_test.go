@@ -17,6 +17,14 @@ func getTestcases() []test {
 			[]string{"ad","ae","af","bd","be","bf","cd","ce","cf"},
 		},
 		{
+			"7",
+			[]string{"p","q","r","s"},
+		},
+		{
+			"27",
+			[]string{"ap","aq","ar","as","bp","bq","br","bs","cp","cq","cr","cs"},
+		},
+		{
 			"",
 			[]string{},
 		},
