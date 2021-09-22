@@ -27,11 +27,15 @@ func getCombination(left, right int, combo string, combinations *[]string) {
 	//---------valid------------------      |
 	//     =1(
 	//                     )    =1
-	//     =0(
-	//                     )    =0
+	//     =0(                    ----------|
+	//                     )    =0          |
 	//--------valid------------------
-	//
-
+	//     =1(                   -----------|
+	//                     )    =1          |
+	//                     )    =0          |
+	//--------not valid--------------       |
+	//                     ) =1
+	//--------not valid--------------
 	if left > 0 {
 		getCombination(left-1, right, combo + "(", combinations)
 	}
