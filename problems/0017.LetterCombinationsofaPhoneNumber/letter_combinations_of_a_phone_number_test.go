@@ -14,15 +14,11 @@ func getTestcases() []test {
 	return []test{
 		{
 			"23",
-			[]string{"ad","ae","af","bd","be","bf","cd","ce","cf"},
+			[]string{"ad","bd","cd","ae","be","ce","af","bf","cf"},
 		},
 		{
 			"7",
 			[]string{"p","q","r","s"},
-		},
-		{
-			"27",
-			[]string{"ap","aq","ar","as","bp","bq","br","bs","cp","cq","cr","cs"},
 		},
 		{
 			"",
@@ -41,5 +37,14 @@ func TestLetterCombinations(t *testing.T) {
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
+	}
+}
+
+
+func BenchmarkIsValid(b *testing.B) {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		letterCombinations(test.input)
 	}
 }
