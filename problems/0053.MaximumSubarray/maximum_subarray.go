@@ -1,24 +1,19 @@
 package problem53
 
 import "math"
-// correct but Time Limit Exceeded
+
+// Kadane’s Algorithm
 func maxSubArray(nums []int) int {
 	max := math.MinInt64
-
-	if len(nums) == 1 {
-		return nums[0]
-	}
-	for i := 0; i < len(nums); i++ {
-		localMax := nums[i]
-
-		for j := i+1; j < len(nums); j++ {
-			localMax += nums[j]
-			if localMax > max {
-				max = localMax
-			}
+	sumSeq := 0
+	for _, v := range nums {
+		sumSeq += v
+		if max < sumSeq {
+			max = sumSeq
 		}
-		if localMax > max {
-			max = localMax
+
+		if sumSeq < 0 {
+			sumSeq = 0
 		}
 	}
 

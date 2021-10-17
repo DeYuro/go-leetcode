@@ -32,6 +32,11 @@ func getTestcases() []test {
 			[]int{-2, -1},
 			-1,
 		},
+		{
+
+		[]int{-1,0,-2},
+		0,
+		},
 	}
 
 }
@@ -42,5 +47,13 @@ func TestMaxSubArray(t *testing.T) {
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
+	}
+}
+
+func BenchmarkMaxSubArray(b *testing.B) {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		maxSubArray(test.input)
 	}
 }
