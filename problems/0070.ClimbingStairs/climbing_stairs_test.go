@@ -27,9 +27,18 @@ func getTestcases() []test {
 	}
 }
 
-func TestClimbStairs(t *testing.T) {
+func TestClimbStairsDp(t *testing.T) {
 	for _, v := range getTestcases() {
-		output := climbStairs(v.input)
+		output := climbStairsDp(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+
+func TestClimbStairsFib(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := climbStairsFib(v.input)
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
