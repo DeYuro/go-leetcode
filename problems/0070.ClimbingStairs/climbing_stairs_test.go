@@ -44,3 +44,19 @@ func TestClimbStairsFib(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkClimbStairsDp(b *testing.B) {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		climbStairsDp(test.input)
+	}
+}
+
+func BenchmarkClimbStairsFib(b *testing.B) {
+	test := getTestcases()[0]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		climbStairsFib(test.input)
+	}
+}
