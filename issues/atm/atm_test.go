@@ -1,5 +1,10 @@
 package atm
 
+import (
+	"reflect"
+	"testing"
+)
+
 type test struct {
 	input int
 	bill map[int]int
@@ -88,5 +93,14 @@ func getTestcases() []test {
 			},
 			[]int{30,30,30,30},
 		},
+	}
+}
+
+func TestAtm(t *testing.T) {
+	for _,v := range getTestcases() {
+		output := atm(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
 	}
 }
