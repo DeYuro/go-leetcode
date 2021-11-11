@@ -98,7 +98,7 @@ func getTestcases() []test {
 
 func TestAtm(t *testing.T) {
 	for _,v := range getTestcases() {
-		output := atm2(v.input, v.bill)
+		output := atm(v.input, v.bill)
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}

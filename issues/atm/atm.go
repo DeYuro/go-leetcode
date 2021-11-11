@@ -12,12 +12,11 @@ func min(a, b int) int {
 	return b
 }
 
-func atm(amount int, bills map[int]int) []int {
+func atm(amount int, bills map[int]int) map[int]int {
 
 	noms := sortedNoms(bills)
 	test := collect(amount, noms, bills)
-	_ = test
-	return []int{}
+	return test
 }
 
 func collect(amount int, noms []int, bills map[int]int) map[int]int {
@@ -26,22 +25,19 @@ func collect(amount int, noms []int, bills map[int]int) map[int]int {
 	}
 
 	if len(noms) == 0 {
-		return map[int]int{}
+		return nil
 	}
 	curNom := noms[0]
 	available := bills[curNom]
 	need := amount / curNom
 	number := min(available, need)
 	for i := number; i >= 0; i-- {
-		result := collect2(amount-i*curNom, noms[1:], bills)
+		result := collect(amount-i*curNom, noms[1:], bills)
 
-		if len(result) > 0 {
+		if result != nil {
 			if i > 0 {
 				m := map[int]int{curNom: i}
-				for k, v := range result {
-					m[k] = v
-				}
-				return m
+				return mergeMap(m, result)
 			} else {
 				return result
 			}
@@ -61,4 +57,12 @@ func sortedNoms(bills map[int]int) []int {
 	sort.Sort(sort.Reverse(sort.IntSlice(sorted)))
 
 	return sorted
+}
+
+func mergeMap(m1, m2 map[int]int) map[int]int  {
+	for k, v := range m2 {
+		m1[k] = v
+	}
+
+	return m1
 }
