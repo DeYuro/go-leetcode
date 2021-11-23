@@ -1,8 +1,10 @@
 package problem144
 
-func preorderTraversal(root *TreeNode) []int {
+import "github.com/deyuro/go-leetcode/structures"
 
-	var res []int
+func preorderTraversal(root *structures.TreeNode) []int {
+
+	res := []int{} // init for not nil
 
 	if root == nil {
 		return res
@@ -13,7 +15,7 @@ func preorderTraversal(root *TreeNode) []int {
 	return res
 }
 
-func preorder(root *TreeNode, res *[]int) {
+func preorder(root *structures.TreeNode, res *[]int) {
 
 	*res = append(*res, root.Val)
 
