@@ -16,5 +16,14 @@ func postorderTraversal(root *structures.TreeNode) []int {
 }
 
 func postorder(root *structures.TreeNode, res *[]int) {
-	//TODO
+
+	if root.Left != nil {
+		postorder(root.Left, res)
+	}
+
+	if root.Right != nil {
+		postorder(root.Right, res)
+	}
+
+	*res = append(*res, root.Val)
 }
