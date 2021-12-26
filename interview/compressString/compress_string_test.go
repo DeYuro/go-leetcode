@@ -1,4 +1,4 @@
-package stringCompress
+package compressString
 
 import (
 	"reflect"
