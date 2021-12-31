@@ -30,7 +30,16 @@ func getTestcases() []test {
 
 func TestSingleNumber(t *testing.T) {
 	for _, v := range getTestcases() {
-		output := singleNumber(v.input,)
+		output := singleNumber(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+
+func TestSingleNumber2(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := singleNumber2(v.input)
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
