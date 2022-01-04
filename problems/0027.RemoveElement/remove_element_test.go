@@ -35,13 +35,10 @@ func TestRemoveElement(t *testing.T) {
 	}
 }
 
-func TestRemoveElement2(t *testing.T) {
-	for _, v := range getTestcases() {
-		output := removeElement(v.nums, v.val)
-		if !reflect.DeepEqual(output, v.expected) {
-			t.Errorf("Expect %v: got %v", v.expected, output)
-		}
+func BenchmarkRemoveElement(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		removeElement(test.nums, test.val)
 	}
 }
-
-// TODO BENCH

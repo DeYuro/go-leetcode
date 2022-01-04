@@ -45,3 +45,19 @@ func TestSingleNumber2(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkSingleNumber(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		singleNumber(test.input)
+	}
+}
+
+func BenchmarkSingleNumber2(b *testing.B) {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		singleNumber2(test.input)
+	}
+}
