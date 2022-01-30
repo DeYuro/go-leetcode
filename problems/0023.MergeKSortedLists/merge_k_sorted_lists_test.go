@@ -32,7 +32,7 @@ func getTestcases() []test {
 	}
 }
 
-func TestMergeTwoLists(t *testing.T)  {
+func TestMergeKLists(t *testing.T)  {
 	for _,v := range getTestcases() {
 		output := mergeKLists(v.input)
 		if !reflect.DeepEqual(output, v.expected) {
