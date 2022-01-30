@@ -1,5 +1,10 @@
 package structures
 
+import (
+	"fmt"
+	"strconv"
+)
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -30,4 +35,14 @@ func CreateListNode(input []int) *ListNode {
 	}
 
 	return list
+}
+
+func (b ListNode) String() string {
+	str := ""
+	p := &b
+	for p != nil {
+		str +=  strconv.Itoa(p.Val)
+		p = p.Next
+	}
+	return fmt.Sprintf("%s", str)
 }
