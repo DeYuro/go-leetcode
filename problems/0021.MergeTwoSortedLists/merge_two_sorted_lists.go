@@ -1,7 +1,7 @@
 package problem21
 
 import (
-	"github.com/go-leetcode/structures"
+	"github.com/deyuro/go-leetcode/structures"
 	"sort"
 )
 
