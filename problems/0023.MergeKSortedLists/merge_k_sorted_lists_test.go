@@ -40,3 +40,28 @@ func TestMergeKLists(t *testing.T)  {
 		}
 	}
 }
+
+func TestMergeKLists2(t *testing.T)  {
+	for _,v := range getTestcases() {
+		output := mergeKLists2(v.input)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
+
+func BenchmarkMergeKLists(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		mergeKLists(test.input)
+	}
+}
+
+func BenchmarkMergeKLists2(b *testing.B)  {
+	test := getTestcases()[2]
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		mergeKLists2(test.input)
+	}
+}
