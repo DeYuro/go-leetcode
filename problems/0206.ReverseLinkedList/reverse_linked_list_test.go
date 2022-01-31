@@ -1,7 +1,7 @@
 package problem206
 
 import (
-	"github.com/go-leetcode/structures"
+	"github.com/deyuro/go-leetcode/structures"
 	"reflect"
 	"testing"
 )

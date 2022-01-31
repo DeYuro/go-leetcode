@@ -1,6 +1,6 @@
 package problem206
 
-import "github.com/go-leetcode/structures"
+import "github.com/deyuro/go-leetcode/structures"
 
 func reverseList(head *structures.ListNode) *structures.ListNode {
 	var cur, next, prev *structures.ListNode
@@ -40,3 +40,4 @@ func reverseList(head *structures.ListNode) *structures.ListNode {
 
 	return prev
 }
+
