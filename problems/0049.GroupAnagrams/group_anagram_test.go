@@ -41,7 +41,7 @@ func TestGroupAnagrams(t *testing.T)  {
 }
 func TestGroupAnagrams2(t *testing.T)  {
 	for _,v := range getTestcases() {
-		output := groupAnagrams(v.input)
+		output := groupAnagrams2(v.input)
 		if !assert.ElementsMatch(dummyt{},output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
