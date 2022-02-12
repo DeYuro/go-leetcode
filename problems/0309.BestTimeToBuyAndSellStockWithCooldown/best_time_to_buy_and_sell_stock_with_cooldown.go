@@ -18,17 +18,6 @@ func maxProfit(prices []int) int {
 	return max(rest, sold)
 }
 
-func maxProfit3(prices []int) int {
-	sold := 0
-	hold := math.MinInt32
-	for i:=0;i < len(prices);i++ {
-		prevSold := sold
-		sold = max(sold, prevSold + prices[i])
-		hold = max(hold, prevSold - prices[i])
-	}
-	return sold
-}
-
 func max(a, b int) int {
 	if a > b {
 		return a
