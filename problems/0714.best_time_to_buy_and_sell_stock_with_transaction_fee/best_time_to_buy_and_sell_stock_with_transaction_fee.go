@@ -1,52 +1,31 @@
 package problem714
 
-import "math"
+func maxProfit(prices []int, fee int) int {
+	bestBuy := make([]int, len(prices))
+	bestSell := make([]int, len(prices))
 
-func maxProfit(prices []int) int {
-	sold := 0
-	rest := 0
-	hold := math.MinInt32
-	for i :=0 ;i < len(prices); i++{
-		prevSold := sold
-		sold = hold + prices[i]
+	bestBuy[0] = prices[0]
+	bestSell[0] = 0
 
-		rmp := rest - prices[i]
-
-		hold = max(hold, rmp)
-		rest = max(rest, prevSold)
+	for i := 1 ; i < len(prices); i++ {
+		bestBuy[i] = min(bestBuy[i-1], prices[i] - bestSell[i-1])
+		bestSell[i] = max(bestSell[i-1], prices[i]-bestBuy[i-1]-fee )
 	}
-	return max(rest, sold)
+
+	return bestSell[len(prices)-1]
 }
 
-func max(a, b int) int {
+func max(a,b int) int  {
 	if a > b {
 		return a
 	}
+
 	return b
 }
 
-
-func maxProfit2(prices []int) int {
-	if len(prices) <= 1 {
-		return 0
+func min(a,b int) int {
+	if a < b {
+		return a
 	}
-
-	dp := make([]int, len(prices))
-	ans := 0
-
-	for i := 0; i < len(prices); i++ {
-		maxProfit := 0
-		for j := i - 1; j >= 0; j-- {
-			maxProfit = max(maxProfit, prices[i]-prices[j])
-			d := 0
-			if j-2 >= 0 {
-				d = dp[j-2]
-			}
-			dp[i] = max(dp[i], d+maxProfit)
-		}
-
-		ans = max(ans, dp[i])
-	}
-
-	return ans
+	return b
 }
