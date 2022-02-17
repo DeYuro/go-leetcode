@@ -32,3 +32,43 @@ func(h *maxHeap) Pop() interface{} {
 
 
 type deque []int
+
+func (d *deque) PushBack(x interface{}) {
+	*d = append([]int{x.(int)}, *d...)
+}
+func (d *deque) PushFront(x interface{}) {
+	*d = append(*d,x.(int))
+}
+
+func (d *deque) PopBack()interface{} {
+	old := *d
+	n := len(old)
+	x := old[0]
+	*d = old[1:n]
+	return x
+}
+
+func (d *deque) PopFront()interface{} {
+	old := *d
+	n := len(old)
+	x := old[n-1]
+	*d = old[:n-1]
+	return x
+}
+
+func (d *deque) PeekBack()interface{} {
+	old := *d
+	x := old[0]
+	return x
+}
+
+func (d *deque) PeekFront()interface{} {
+	old := *d
+	n := len(old)
+	x := old[n-1]
+	return x
+}
+
+func (d deque) IsEmpty() bool {
+	return len(d) == 0
+}
