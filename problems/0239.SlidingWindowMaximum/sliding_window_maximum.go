@@ -68,3 +68,26 @@ func maxSlidingWindow(nums []int, k int) []int {
 
 	return res
 }
+
+func maxSlidingWindow2(nums []int, k int) []int {
+	var deq deque
+	var res []int
+	for i := 0; i < len(nums); i++ {
+
+		for !deq.IsEmpty() && (i-k == deq.PeekBack().(int)) {
+			deq.PopBack()
+		}
+
+		for !deq.IsEmpty() && nums[deq.PeekFront().(int)] < nums[i] {
+			deq.PopFront()
+		}
+
+		deq.PushFront(i)
+
+		if i >= k - 1 {
+			res = append(res, nums[deq.PeekBack().(int)])
+		}
+	}
+
+	return res
+}
