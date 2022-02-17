@@ -29,3 +29,6 @@ func(h *maxHeap) Pop() interface{} {
 	*h = old[:n-1]
 	return x
 }
+
+
+type deque []int
