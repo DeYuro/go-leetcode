@@ -1,5 +1,5 @@
 package problem763
-
+// todo tests
 func partitionLabels1(s string) []int {
 	res := []int{}
 	m := make(map[rune]int)
