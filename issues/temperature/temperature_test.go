@@ -21,7 +21,7 @@ func getTestcases() []test {
 
 func TestTemperatures (t *testing.T) {
 	for _,v := range getTestcases() {
-		output := temperatures(v.n)
+		output := temperatures2(v.n)
 		if !reflect.DeepEqual(output, v.expected) {
 			t.Errorf("Expect %v: got %v", v.expected, output)
 		}
