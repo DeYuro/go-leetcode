@@ -149,3 +149,69 @@ func leastBricks(wall [][]int) int {
 	}
 	return min
 }
+
+
+import "container/list"
+
+type state struct {
+	node *TreeNode
+	lvl  int
+}
+
+func minDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	queue := list.New()
+	queue.PushBack(&state{root, 1})
+
+	for queue.Len() > 0 {
+		v := queue.Front()
+		q := v.Value.(*state)
+		p, lvl := q.node, q.lvl
+		queue.Remove(v)
+		if p.Left == nil && p.Right == nil {
+			return lvl
+		}
+		if p.Left != nil {
+			queue.PushBack(&state{p.Left, lvl + 1})
+		}
+		if p.Right != nil {
+			queue.PushBack(&state{p.Right, lvl + 1})
+		}
+	}
+	return 0
+}
+
+func minDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	q := []*TreeNode{root}
+
+	depth := 1
+	for len(q) > 0 {
+		s := len(q)
+		for i := 0; i < s; i++ {
+			curr := q[0]
+			q = q[1:]
+
+			if curr.Left == nil && curr.Right == nil {
+				return depth
+			}
+
+			if curr.Left != nil {
+				q = append(q, curr.Left)
+			}
+
+			if curr.Right != nil {
+				q = append(q, curr.Right)
+			}
+		}
+		depth++
+	}
+
+	return -1
+}
