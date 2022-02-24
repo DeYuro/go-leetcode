@@ -42,7 +42,7 @@ func TestLongestCommonPrefix2(t *testing.T) {
 }
 
 func BenchmarkLongestCommonPrefix(b *testing.B)  {
-	test := getTestcases()[2]
+	test := getTestcases()[0]
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		longestCommonPrefix(test.input)
@@ -50,7 +50,7 @@ func BenchmarkLongestCommonPrefix(b *testing.B)  {
 }
 
 func BenchmarkLongestCommonPrefix2(b *testing.B)  {
-	test := getTestcases()[2]
+	test := getTestcases()[0]
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		longestCommonPrefix2(test.input)
