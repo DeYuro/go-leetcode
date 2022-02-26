@@ -85,3 +85,29 @@ func addBinary2(a string, b string) string {
 	}
 	return res
 }
+
+func addBinary3(a string, b string) string {
+	carry := '0'
+	n := len(a)
+	m := len(b)
+	str := ""
+	for i,j := n-1, m-1 ; i >= 0 || j >= 0 || carry != '0'; {
+		ab := '0'
+		bb := '0'
+		if i >= 0 {
+			ab = rune(a[i])
+			i--
+		}
+
+		if j >= 0 {
+			bb = rune(b[j])
+			j--
+		}
+		res := '0'
+		res, carry = add(ab,bb, carry)
+
+		str = string(res) + str
+	}
+
+	return str
+}

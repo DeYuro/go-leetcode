@@ -13,11 +13,11 @@ type test struct {
 
 func getTestcases() []test {
 	return []test{
-		//{
-		//	"11",
-		//	"1",
-		//	"100",
-		//},
+		{
+			"11",
+			"1",
+			"100",
+		},
 		{
 			"1010",
 			"1011",
@@ -45,6 +45,14 @@ func TestAddBinary2(t *testing.T) {
 	}
 }
 
+func TestAddBinary3(t *testing.T) {
+	for _, v := range getTestcases() {
+		output := addBinary3(v.a, v.b)
+		if !reflect.DeepEqual(output, v.expected) {
+			t.Errorf("Expect %v: got %v", v.expected, output)
+		}
+	}
+}
 
 func BenchmarkAddBinary(b *testing.B) {
 	test := getTestcases()[0]
