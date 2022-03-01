@@ -3,6 +3,7 @@ package meeting_room_2
 import (
 	"container/heap"
 	"sort"
+	"strconv"
 	"testing"
 )
 
@@ -213,5 +214,47 @@ func minDepth(root *TreeNode) int {
 		depth++
 	}
 
+	return -1
+}
+
+
+func openLock(deadends []string, target string) int {
+	visited := make(map[string]bool)
+	for _, dead := range deadends {
+		visited[dead] = true
+	}
+
+	if visited["0000"] {
+		return -1
+	}
+	visited["0000"] = true
+	queue := []string{"0000"}
+	rotate := 0
+	for len(queue) > 0 {
+		newQueue := []string{}
+		for _, s := range queue {
+			if s == target {
+				return rotate
+			}
+
+			for i := 0; i < len(s); i++ {
+				j := (int(s[i]-'0') + 1) % 10
+				ns := s[:i] + strconv.Itoa(j) + s[i+1:]
+				if !visited[ns] {
+					visited[ns] = true
+					newQueue = append(newQueue, ns)
+				}
+				j = (int(s[i]-'0') - 1 + 10) % 10
+				ns = s[:i] + strconv.Itoa(j) + s[i+1:]
+				if !visited[ns] {
+					visited[ns] = true
+					newQueue = append(newQueue, ns)
+				}
+			}
+		}
+
+		queue = newQueue
+		rotate++
+	}
 	return -1
 }
